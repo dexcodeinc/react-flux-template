@@ -1,0 +1,55 @@
+{
+  "name": "hello-world-ssr-demo",
+  "description": "hello-world-ssr-demo",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zertosh/ssr-demo-kit.git"
+  },
+  "dependencies": {
+    "coffee-script": "^1.9.0",
+    "coffeeify": "^1.0.0",
+    "express": "4.10.1",
+    "htmlescape": "1.0.0",
+    "morgan": "1.4.1",
+    "route-builder": "0.0.1",
+    "underscore": "1.7.0"
+  },
+  "devDependencies": {
+    "browserify": "6.2.0",
+    "coffee-reactify": "^2.4.1",
+    "coffee-script": "^1.9.0",
+    "envify": "3.0.0",
+    "react": "0.12.0",
+    "reactify": "0.15.2",
+    "source-map-support": "0.2.8"
+  },
+  "scripts": {
+    "build-css": "mkdir -p public && cat app/*.css > public/main.css",
+    "build-js": "mkdir -p public && browserify app/main.coffee --extension=\".coffee\" --extension=\".cjsx\" --standalone Application --debug --outfile public/main.js",
+    "build": "npm run build-js && npm run build-css",
+    "start": "coffee server --nodejs",
+    "web": "npm run build && npm start"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "coffee-reactify",
+        {
+          "coffeeout": true
+        }
+      ],
+      [
+        "coffeeify"
+      ],
+      [
+        "reactify",
+        {
+          "es6": true,
+          "ext": ".jsx"
+        }
+      ],
+      "envify"
+    ]
+  }
+}
