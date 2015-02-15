@@ -12,10 +12,22 @@ Install the dependencies:
 npm install
 ```
 
-Compile the assets and start the server:
+Compile the assets:
 
 ```
-npm run web
+grunt compile
+```
+
+Watch for changes:
+
+```
+grunt watch
+```
+
+Start the server:
+
+```
+npm start
 ```
 
 Then go to [http://localhost:8000](http://localhost:8000)

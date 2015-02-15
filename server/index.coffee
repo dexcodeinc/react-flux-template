@@ -1,4 +1,4 @@
-if process.env.NODE_ENV != 'production'
+if process.env.NODE_ENV isnt 'production'
   require('source-map-support').install()
 
 _ = require('underscore')

@@ -28,12 +28,12 @@ Navigate = React.createClass({
   onClick: (e) ->
     @props.onClick?(e)
 
-    if (e.metaKey || e.shiftKey || e.altKey || e.ctrlKey) then return
+    if e.metaKey or e.shiftKey or e.altKey or e.ctrlKey then return
 
     e.preventDefault()
     {href} = @state
     {page} = @props
-    if (window.location.pathname != href)
+    if window.location.pathname isnt href
       window.history.pushState({}, document.title, href)
 
     AppActions.navigateSwitchPage(href, page)

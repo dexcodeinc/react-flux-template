@@ -20,36 +20,15 @@
     "coffee-reactify": "^2.4.1",
     "coffee-script": "^1.9.0",
     "envify": "3.0.0",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.3.0",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
     "react": "0.12.0",
     "reactify": "0.15.2",
     "source-map-support": "0.2.8"
   },
   "scripts": {
-    "build-css": "mkdir -p public && cat app/*.css > public/main.css",
-    "build-js": "mkdir -p public && browserify app/main.coffee --extension=\".coffee\" --extension=\".cjsx\" --standalone Application --debug --outfile public/main.js",
-    "build": "npm run build-js && npm run build-css",
-    "start": "coffee server --nodejs",
-    "web": "npm run build && npm start"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "coffee-reactify",
-        {
-          "coffeeout": true
-        }
-      ],
-      [
-        "coffeeify"
-      ],
-      [
-        "reactify",
-        {
-          "es6": true,
-          "ext": ".jsx"
-        }
-      ],
-      "envify"
-    ]
+    "start": "nodemon --watch server --watch public -e coffee,js,tmpl --debug server/index.coffee"
   }
 }
